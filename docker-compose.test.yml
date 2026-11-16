@@ -1,0 +1,29 @@
+# Local test only (Daytona). Mirrors the Railway template's variables.
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: testpw
+      POSTGRES_DB: railway
+    volumes: [pg:/var/lib/postgresql/data]
+    labels: [her=2279]
+  rundeck:
+    build: .
+    depends_on: [postgres]
+    environment:
+      PORT: "44279"
+      RUNDECK_ADMIN_PASSWORD: localTestPassword123
+      RUNDECK_ENCRYPTION_PASSWORD: localEncryptionSecret456
+      RUNDECK_GRAILS_URL: http://localhost:44279
+      PGHOST: postgres
+      PGPORT: "5432"
+      PGDATABASE: railway
+      PGUSER: postgres
+      PGPASSWORD: testpw
+    ports: ["44279:44279"]
+    volumes: [rdvar:/home/rundeck/var]
+    labels: [her=2279]
+volumes:
+  pg:
+  rdvar:
