@@ -1,3 +1,5 @@
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/rundeck-1?utm_medium=integration&utm_source=button&utm_campaign=rundeck)
+
 # Rundeck on Railway
 
 A Railway template for [Rundeck](https://www.rundeck.com/open-source), the open-source runbook automation and job scheduler from PagerDuty. It builds from this repo: the `Dockerfile` pins the official image and adds a small start script.
